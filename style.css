@@ -1,0 +1,151 @@
+:root {
+    --border__color: #828282;
+    --additional-text__color: #9E9E9E;
+    --time__background-color: #D9E8FF;
+    --button__background_color: #FED74B;
+    --button__border_color: #CBA500;
+
+    --card__border_radius: 16px;
+    --button__border_radius: 20px;
+}
+
+body {
+    margin-top: 50px;
+}
+
+.custom-card {
+    border-radius: var(--card__border_radius);
+    border: 0.3px solid var(--border__color);
+    font-family: "Open Sans";
+}
+
+.custom-card__img {
+    padding: 0;
+    border-radius: inherit;
+}
+
+.custom-card__img img {
+    object-fit: cover;
+    width: 100%;
+    min-height: 220px;
+    max-height: 470px;
+    border-radius: inherit;
+}
+
+.custom-card__body {
+    padding: 12px;
+}
+
+.custom-card__footer {
+    display: flex;
+    justify-content: space-between;
+    max-width: 330px;
+}
+
+.custom-card__duration {
+    color: var(--additional-text__color);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    padding-left: 16px;
+    margin-left: 12px;
+    position: relative;
+}
+
+.custom-card__duration::before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(img/clock.svg);
+    position: absolute;
+    left: -9px;
+    top: 2px;
+}
+
+.custom-card__heading {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    color: #404040;
+}
+
+.custom-card__list {
+    list-style: none;
+}
+
+.custom-card__list_item {
+    color: #4B4B4B;
+    position: relative;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 10px 0;
+}
+
+.custom-card__list_item::before {
+    content: "";
+    display: block;
+    position: absolute;
+    background-image: url(img/check-mark.svg);
+    width: 16px;
+    height: 16px;
+    top: 3px;
+    left: -30px;
+}
+
+.custom-card__departures {
+    display: flex;
+    margin-top: 7px;
+}
+
+.custom-card__departures_time {
+    padding: 2px 10px;
+    margin: 0 4px;
+    border-radius: 11px;
+    background-color: var(--time__background-color);
+}
+
+.custom-card__price {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.custom-card__price_online {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 20px;
+    position: relative;
+}
+
+.custom-card__price_online::after {
+    content: "";
+    display: block;
+    width: 19px;
+    height: 23px;
+    position: absolute;
+    top: 0;
+    left: 55px;
+    background-image: url(img/ruble.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.custom-card__price_offline {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 20px;
+    margin-top: 2px;
+}
+
+.custom-card__button {
+    background-color: var(--button__background_color);
+    border: 0.5px solid var(--button__border_color);
+    border-radius: var(--button__border_radius);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 12px 45px;
+}
