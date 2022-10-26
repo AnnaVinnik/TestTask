@@ -22,8 +22,8 @@
   
   body {
     margin: 0;
+    overflow-x: hidden;
   }
-  
   /**
    * Render the `main` element consistently in IE.
    */
@@ -359,4 +359,10 @@
     width: 990px;
     max-width:95%;
     background-color: #fff;
+  }
+
+  @media (max-width: 350px) {
+    table {
+        font-size: 12px;
+    }
   }
