@@ -40,12 +40,12 @@ document.addEventListener('DOMContentLoaded', function() {
 function renderTimeSelect() {            
     times.forEach(elem => {
         time.insertAdjacentHTML("beforeend", 
-            `<option value="${elem.getHours() + differenceUtc}:${elem.getMinutes().toString().padStart(2, [0])}(из B в A)">${+elem.getHours() + differenceUtc}:${elem.getMinutes().toString().padStart(2, [0])}(из A в B)</option>`
+            `<option value="${elem.getHours() + differenceUtc}:${elem.getMinutes().toString().padStart(2, [0])}(из A в B)">${+elem.getHours() + differenceUtc}:${elem.getMinutes().toString().padStart(2, [0])}(из A в B)</option>`
         )
     });
     timesBack.forEach(elem => {
         time.insertAdjacentHTML("beforeend", 
-            `<option value="${+elem.getHours() + differenceUtc}:${elem.getMinutes().toString().padStart(2, [0])}(из B в A)">${+elem.getHours() + differenceUtc}:${elem.getMinutes()}(из B в A)</option>`
+            `<option value="${+elem.getHours() + differenceUtc}:${elem.getMinutes().toString().padStart(2, [0])}(из B в A)">${+elem.getHours() + differenceUtc}:${elem.getMinutes().toString().padStart(2, [0])}(из B в A)</option>`
         )
     });
 }
@@ -82,8 +82,19 @@ function countArrival(elem) {
     return arrival;
 }
 
+//В дополнительном select выводим только те варианты, которые позже времени прибытия
 function handleTime() {
     const arrival = countArrival(time);
+
+    //Переопределяем список
+    timeBack.innerHTML = "";
+    timesBack.forEach(elem => {
+        timeBack.insertAdjacentHTML("beforeend", 
+            `<option 
+                value="${+elem.getHours() + differenceUtc}:${elem.getMinutes().toString().padStart(2, [0])}(из B в A)">
+                ${+elem.getHours() + differenceUtc}:${elem.getMinutes().toString().padStart(2, [0])}(из B в A)
+            </option>` )
+    });
 
     //Удаляем опции, которые раньше времени прибытия
     for(let i = 0; i < timeBack.options.length; i++) {             
@@ -100,7 +111,6 @@ function handleTime() {
             }
         }
     }
-   
 }
 
 //Выводим результаты подсчетов 
