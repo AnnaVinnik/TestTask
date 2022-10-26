@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nevatrip - Водные прогулки и экскурсии по Петербургу</title>
+    </head>
+    <body>
+        <form class="form" id="form">
+            <div>
+                <select name="route" id="route">
+                    <option value="из A в B">из A в B</option>
+                    <option value="из B в A">из B в A</option>
+                    <option value="из A в B и обратно в А">из A в B и обратно в А</option>
+                </select>
+            </div>
+            <div id="time__options">
+                <label for="time">Выберите время</label>
+                <select name="time" id="time"></select>
+            </div>
+            <div>
+                <label for="num">Количество билетов</label>
+                <input id="num">
+                <button type="submit" id="button__count" class="button">Посчитать</button>
+            </div>
+            <div class="result" id="result"></div>
+        </form>
+        <script src="script.js"></script>
+    </body>
+</html>
