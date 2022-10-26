@@ -18,15 +18,17 @@ const timesBack = [
     new Date(2022, 9, 26, 21, 55),
 ];
 
+//Вычисление разницы между часовым поясом пользователя и UTC+3, для того, чтобы показывать время в часовом поясе пользователя
 let userUtc = new Date();
 userUtc = userUtc.getHours() -userUtc.getUTCHours();
 const differenceUtc = userUtc - 3;
+
 const form = document.getElementById("form");
 const route = document.getElementById("route");
-const time = document.getElementById("time");
 const result = document.getElementById("result");
-const num = document.getElementById("num");
+const time = document.getElementById("time");
 let timeBack = null;
+const num = document.getElementById("num");
 
 document.addEventListener('DOMContentLoaded', function() {
     renderTimeSelect();
@@ -34,7 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener("submit", showResult);
 });
 
-function renderTimeSelect() {
+// Добавляем select с вариантами времени отправлений в часовом поясе пользователя
+function renderTimeSelect() {            
     times.forEach(elem => {
         time.insertAdjacentHTML("beforeend", 
             `<option value="${elem.getHours() + differenceUtc}:${elem.getMinutes().toString().padStart(2, [0])}(из B в A)">${+elem.getHours() + differenceUtc}:${elem.getMinutes().toString().padStart(2, [0])}(из A в B)</option>`
@@ -47,7 +50,8 @@ function renderTimeSelect() {
     });
 }
 
-function handleRoute(event) {
+//Добавляем дополнительный select при выборе пункта "из А в В и обратно в А"
+function handleRoute() {
     if (route.value === "из A в B и обратно в А") {
         const timeOptions = document.getElementById("time__options");
         timeBack = document.createElement("select");
@@ -63,6 +67,9 @@ function handleRoute(event) {
     }
 }
 
+//Считаем время пребытия от времени отправления
+//Входные параметры: строка с временем
+//Возвращаемый параметр: элемент Date
 function countArrival(elem) {
     const departure = new Date();
     departure.setHours(elem.value[0] + elem.value[1], elem.value[3] + elem.value[4], 0);
@@ -78,7 +85,8 @@ function countArrival(elem) {
 function handleTime() {
     const arrival = countArrival(time);
 
-    for(let i = 0; i < timeBack.options.length; i++) {              //Удаляем опции, которые раньше времени прибытия
+    //Удаляем опции, которые раньше времени прибытия
+    for(let i = 0; i < timeBack.options.length; i++) {             
         let elem = timeBack.options[i];
         if(+(elem.value[0] + elem.value[1]) < arrival.getHours()) {
             elem.remove();
@@ -95,6 +103,7 @@ function handleTime() {
    
 }
 
+//Выводим результаты подсчетов 
 function showResult(event) {
     event.preventDefault();
     result.insertAdjacentHTML("beforeend", `
