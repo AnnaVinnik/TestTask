@@ -184,6 +184,7 @@ body {
 .custom-card__price {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     flex-direction: column;
 }
 
@@ -200,8 +201,8 @@ body {
     width: 19px;
     height: 23px;
     position: absolute;
-    top: 0;
-    left: 55px;
+    top: -2px;
+    right: -22px;
     background-image: url(img/ruble.svg);
     background-size: contain;
     background-repeat: no-repeat;
@@ -271,7 +272,6 @@ body {
     }
 
     .custom-card__price_online::after {
-        left: 65px;
         height: 26px;
     }
 
