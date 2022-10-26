@@ -15,10 +15,69 @@ body {
     padding: 17px;
 }
 
+.new__yellow {
+    position: relative;
+}
+
+.new__yellow::after {
+    content: "Новинка";
+    display: block;
+    position: absolute;
+    padding: 12px 35px;
+    top: 40px;
+    left: 0;
+    text-transform: uppercase;
+    background-color: #FED74B;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.new__blue {
+    position: relative;
+}
+
+.new__blue::after {
+    content: "Новинка";
+    display: block;
+    position: absolute;
+    padding: 12px 35px;
+    top: 40px;
+    left: 0;
+    text-transform: uppercase;
+    background-color: #099CE8;
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.new__blue_corner {
+    position: relative;
+}
+
+.new__blue_corner::after {
+    content: "Новинка";
+    display: block;
+    position: absolute;
+    padding: 12px 35px;
+    top: 0;
+    left: 0;
+    text-transform: uppercase;
+    background-color: #7553FF;
+    border-radius: var(--card__border_radius) 0 var(--card__border_radius) 0;
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+
 .custom-card {
     border-radius: var(--card__border_radius);
     border: 0.3px solid var(--border__color);
     font-family: "Open Sans";
+    margin-bottom: 50px;
 }
 
 .custom-card__img {
@@ -166,7 +225,25 @@ body {
     padding: 12px 45px;
 }
 
+.custom-card__button_right-angles {
+    border-radius: 10px;
+}
+
 @media (min-width: 575px) {
+    .new__yellow::after {
+        font-size: 16px;
+        top: 45px;
+    }
+
+    .new__blue::after {
+        font-size: 16px;
+        top: 45px;
+    }
+
+    .new__blue_corner::after {
+        font-size: 16px;
+    }
+
     .custom-card__img img {
         border-radius: var(--card__border_radius) 0 0 var(--card__border_radius);
     }
